@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_CREDENTIALS = credentials('docker credentials') // Your Docker Hub credentials
-        KUBECONFIG = credentials('Kube') // Your Minikube kubeconfig
+        KUBECONFIG = credentials('kube') // Your Minikube kubeconfig
     }
 
     stages {
