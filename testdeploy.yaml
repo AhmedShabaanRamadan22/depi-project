@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: simple-app1
-        image: nginx:alpine 
+        image: ahmed862/simple-app1
         ports:
         - containerPort: 80
 
