@@ -35,9 +35,9 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                        echo "Deploying to Dev namespace..."
+                        echo "Deploying to namespace..."
                         
-                         sh 'kubectl apply -f testdeploy.yaml -n dev'
+                         sh 'kubectl apply -f testdeploy.yaml -n namespace1'
                         
                 }
             
