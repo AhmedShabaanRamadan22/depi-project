@@ -36,11 +36,10 @@ metadata:
   name: simple-app1-service
   namespace: namespace1
 spec:
-  type:  NodePort
+  type: LoadBalancer   
   selector:
     app: simple-app1
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 30009
+    port: 30080      
+    targetPort: 80      
