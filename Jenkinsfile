@@ -37,7 +37,7 @@ pipeline {
             steps {
                         echo "Deploying to namespace..."
                         
-                         sh 'kubectl apply -f testdeploy.yaml -n namespace1'
+                         sh 'kubectl apply -f testdeploy.yaml '
                         
                 }
             
