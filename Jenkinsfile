@@ -36,9 +36,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                         echo "Deploying to namespace..."
-                        
-                         sh 'kubectl apply -f testdeploy.yaml '
-                        
+                        sh 'aws eks update-kubeconfig --name my-eks-cluster --region us-east-2'
+                        sh 'kubectl apply -f testdeploy.yaml '
                 }
             
         }
