@@ -1,0 +1,54 @@
+---
+- name: Install Jenkins, AWS CLI, and Kubernetes on Linux (YUM-based systems)
+  hosts: jenkins
+  become: yes
+  become_user: root
+
+  tasks:
+
+    # Step 1: Install Jenkins
+    - name: yum update
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Add the Jenkins repo
+      get_url:
+        url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
+
+    - name: Import Jenkins GPG key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+    - name: yum update after adding Jenkins repo
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Install Java (Amazon Corretto 17)
+      yum:
+        name: java-17-amazon-corretto
+        state: present
+
+    - name: Install Jenkins
+      yum:
+        name: jenkins
+        state: present
+
+    - name: Start and enable Jenkins service
+      ansible.builtin.systemd:
+        enabled: yes
+        name: jenkins
+        state: started
+
+    # Step 2: Install AWS CLI using YUM
+    - name: Install AWS CLI
+      yum:
+        name: aws-cli
+        state: present
+
+
+
+
