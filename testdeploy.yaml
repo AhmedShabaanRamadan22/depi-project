@@ -41,5 +41,5 @@ spec:
     app: simple-app1
   ports:
   - protocol: TCP
-    port: 9000   # الخارج 
-    targetPort: 80  
+    port: 9000
+    targetPort: 80
